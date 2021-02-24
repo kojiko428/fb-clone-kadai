@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Sample</title>
+    <title>faceblog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<!-- 追記 スマフォサイズの媒体にも適用 -->
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+     <ul>
+       <li><a href="http://localhost:3000/">トップページ</a></li>
+       <!-- <li><a href="#">Login</a></li>
+       <li><a href="#">sign up</a></li> -->
+     </ul>
+   </header>
+   <%= yield %>
+   <footer>
+     <p>運営会社 faceblog.inc</p>
+     <p>© 2021 faceblog Corp.</p>
+   </footer>
   </body>
 </html>
