@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
   get '/blogs', to: 'blogs#index'
   get '/stocks', to: 'stocks#index'
 
@@ -14,8 +15,12 @@ Rails.application.routes.draw do
   root to: 'tops#index'
     resources :blogs
 
-# ログインシステム
-  resources :users, only: [:new, :create]
+# ユーザー新規登録
+  resources :users, only: [:new, :create, :show]
+
+# ログインシステム・ログアウトシステム
+ resources :sessions, only: [:new, :create, :destroy]
+ resources :users, only: [:new, :create, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
