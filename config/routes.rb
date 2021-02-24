@@ -10,8 +10,12 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'tops#index'  
+# Bootstrap
+  root to: 'tops#index'
     resources :blogs
+
+# ログインシステム
+  resources :users, only: [:new, :create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
