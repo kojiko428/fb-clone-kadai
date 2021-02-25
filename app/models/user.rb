@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
 
-# 追記アソシエーション
-  has_many :books
+# 追記 userblogアソシエーション
+  has_many :blogs
+# お気に入りアソシエーション
+  has_many :favorites, dependent: :destroy
 end

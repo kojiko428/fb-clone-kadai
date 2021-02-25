@@ -10,12 +10,14 @@ class BlogsController < ApplicationController
      end
      # 追記する
      def create
-       @blog=Blog.create(blog_params)
+       @blog = current_user.blogs.build(blog_params)
+       # @blog=Blog.create(blog_params)
+       # @blog.user_id = current_user.id
        if params[:back]
         render :new
       elsif @blog.save
        # 一覧画面へ遷移して"ブログを作成しました！"とメッセージを表示します。
-        redirect_to new_blog_path , notice: "ブログを作成しました！"
+        redirect_to new_blog_path , notice: "#{@blog.user.name}さんがブログを作成しました！"
        else
        # 入力フォームを再描画します。
         render :new
@@ -24,6 +26,8 @@ class BlogsController < ApplicationController
 
     def show
       # @blog = Blog.find(params[:id])
+      # お気に入り機能
+       @favorite = current_user.favorites.find_by(blog_id: @blog.id)
     end
 
     def edit
@@ -33,7 +37,7 @@ class BlogsController < ApplicationController
       # @blog = Blog.find(params[:id])
 
       if @blog.update(blog_params)
-        redirect_to blogs_path , notice: "ブログを編集しました！"
+        redirect_to blogs_path , notice: "#{@blog.user.name}さんがブログを編集しました！"
       else
         render :edit
       end
@@ -43,11 +47,13 @@ class BlogsController < ApplicationController
 
      def destroy
        @blog.destroy
-       redirect_to blogs_path, notice:"ブログを削除しました！"
+       redirect_to blogs_path, notice:"#{@blog.user.name}さんがブログを削除しました！"
      end
 
      def confirm
-         @blog = Blog.new(blog_params)
+         @blog = current_user.blogs.build(blog_params)
+         # @blog = Blog.new(blog_params)
+         # @blog.user_id = current_user.id
          render :new if @blog.invalid?
        end
 
