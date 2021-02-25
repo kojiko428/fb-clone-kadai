@@ -1,17 +1,12 @@
 <h3>以下の内容で、登録する。</h3>
+<!-- 追加 Url -->
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
-
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
+  <%= form.hidden_field :image_cache %>
   <p>タイトル:<%= @blog.title %></p>
   <p>本文:<%= @blog.content %></p>
- <%= form.hidden_field :image_cache %>
- <p>
- <strong>Image:</strong>
-  <%= image_tag @blog.image.url %>
- </p>
-
-
+  <p>Image:<%= image_tag @blog.image.url %> </p>
 
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
