@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 2021_02_24_045418) do
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "content"
+
+    # 追加
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   end
 
   create_table "users", force: :cascade do |t|
