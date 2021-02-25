@@ -69,3 +69,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # 追記 has_secure_passwordメソッドのため
 gem 'bcrypt', '3.1.11'
+
+# キャリアウエーブ
+gem 'carrierwave'
+gem 'mini_magick'
