@@ -1,4 +1,8 @@
 <h3>以下の内容で、登録する。</h3>
+
+<div class=name>
+<p><%="#{@blog.user.name}さんのブログ"%></p>
+</div>
 <!-- 追加 Url -->
 <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
